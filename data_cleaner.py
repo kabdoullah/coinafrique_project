@@ -21,7 +21,7 @@ def clean_price(price_str):
     price_str = str(price_str).strip()
 
     # Vérifier si c'est "Prix sur demande"
-    if "demande" in price_str.lower() or "négociable" in price_str.lower():
+    if "demande" in price_str.lower():
         return None
 
     # Extraire les chiffres
@@ -141,13 +141,6 @@ def load_and_clean_all_data(data_folder="webscraper_data"):
     if all_dfs:
         # Combiner tous les DataFrames
         combined_df = pd.concat(all_dfs, ignore_index=True)
-
-        # Supprimer les doublons potentiels
-        if 'Nom' in combined_df.columns and 'adresse' in combined_df.columns:
-            combined_df = combined_df.drop_duplicates(
-                subset=['Nom', 'prix', 'adresse'],
-                keep='first'
-            )
 
         return combined_df
 

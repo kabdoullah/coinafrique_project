@@ -1,6 +1,4 @@
-import re
 
-import pandas as pd
 import streamlit as st
 
 from data_cleaner import load_and_clean_all_data
@@ -32,10 +30,6 @@ def show():
     # Filtres
     st.markdown("### Filtres")
 
-    # Ajouter une colonne catégorie basée sur les fichiers
-    if "categorie" not in df.columns:
-        df["categorie"] = "Toutes"
-
     # Sélecteur de catégorie
     categories_disponibles = ["Toutes"] + df["categorie"].unique().tolist()
     categorie_selectionnee = st.selectbox(
@@ -52,7 +46,7 @@ def show():
 
 
     # Graphiques basés sur le DataFrame
-    if not df_filtered.empty and "Nom" in df_filtered.columns and "prix" in df_filtered.columns and "adresse" in df_filtered.columns:
+    if not df_filtered.empty:
 
         # Première ligne - 2 colonnes
         col1, col2 = st.columns(2)
@@ -91,17 +85,9 @@ def show():
             # Graphique 4: Distribution des prix - Scatter Chart
             st.markdown("#### Distribution des prix")
             if "prix" in df_filtered.columns:
-                # Nettoyer les prix
-                def clean_price_value(price_str):
-                    if pd.isna(price_str):
-                        return None
-                    numbers = re.findall(r'\d+', str(price_str))
-                    if numbers:
-                        return float(''.join(numbers))
-                    return None
-
+              
                 scatter_data = df_filtered.copy()
-                scatter_data["prix_numeric"] = scatter_data["prix"].apply(clean_price_value)
+                scatter_data["prix_numeric"] = scatter_data["prix"]
                 scatter_data = scatter_data[scatter_data["prix_numeric"].notna()].head(100)
 
                 if not scatter_data.empty:

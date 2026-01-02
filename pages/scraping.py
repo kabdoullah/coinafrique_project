@@ -81,7 +81,7 @@ def show():
 
                 # Prévisualisation des données
                 st.subheader("Aperçu des données scrapées")
-                st.dataframe(df.head(10), width="stretch", hide_index=True)
+                st.dataframe(df.head(10), width="stretch", hide_index=False)
 
         except Exception as e:
             # Gestion des erreurs

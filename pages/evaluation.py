@@ -11,10 +11,10 @@ def show():
     """)
 
     # Ajouter un espace vertical
-    st.write("" * 4)
+    st.write("")
 
     # Créer deux colonnes pour les boutons
-    col1, col2 = st.columns(2, gap='medium')
+    col1, col2 = st.columns(2, gap="medium")
 
     with col1:
         # Bouton KoBoToolbox
@@ -23,7 +23,7 @@ def show():
             label="Ouvrir le formulaire KoBoToolbox",
             url=kobo_url,
             type="primary",
-            width='stretch',
+            width="stretch",
         )
 
     with col2:
@@ -32,10 +32,6 @@ def show():
         st.link_button(
             label="Ouvrir le formulaire Google Forms",
             url=google_url,
-            type="primary",
-            width='stretch',
+            type="secondary",
+            width="stretch",
         )
-
-
-   
-  

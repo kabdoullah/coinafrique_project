@@ -1,0 +1,10 @@
+# Configuration Streamlit pour Coinafrique Scraper
+# Documentation: https://docs.streamlit.io/library/advanced-features/configuration
+
+[theme]
+# Thème personnalisé pour l'application
+primaryColor = "#FF4B4B"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#262730"
+textColor = "#FAFAFA"
+font = "sans serif"
